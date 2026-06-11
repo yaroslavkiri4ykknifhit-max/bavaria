@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function CatalogPage() {
@@ -28,11 +29,12 @@ export default function CatalogPage() {
           Профессиональный чип-тюнинг и индивидуальная настройка блоков управления (DME/DDE) для всего модельного ряда.
         </p>
 
-        <div className="w-full mt-6 md:mt-10 overflow-hidden border-2 border-black">
-          <img 
+        <div className="w-full mt-6 md:mt-10 border-2 border-black relative h-[40vh] md:h-[60vh] bg-gray-100">
+          <Image 
             src="/bg/main_bg.png" 
             alt="BMW Tuning Garage" 
-            className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover"
+            fill
+            className="object-cover"
           />
         </div>
       </section>

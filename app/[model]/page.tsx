@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Cpu, Settings, ShieldCheck } from "lucide-react";
 import Quiz from "@/components/Quiz";
@@ -71,11 +72,12 @@ export default async function ModelPage({ params }: Props) {
         </div>
 
         {/* Инлайн-изображение вместо фона */}
-        <div className="w-full border-2 border-black overflow-hidden bg-black mt-4 md:mt-0">
-          <img 
+        <div className="w-full border-2 border-black bg-black mt-4 md:mt-0 relative h-[40vh] md:h-[60vh]">
+          <Image 
             src={`/bg/bg_${modelStr}.png`} 
             alt={`BMW ${model}`} 
-            className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover opacity-90 hover:opacity-100 transition-opacity"
+            fill
+            className="object-cover opacity-90 hover:opacity-100 transition-opacity"
           />
         </div>
       </section>
