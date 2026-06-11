@@ -16,20 +16,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${inter.variable} font-sans min-h-screen flex flex-col bg-neutral-950 text-zinc-300 relative shadow-[inset_0_0_100px_rgba(0,0,0,0.9)]`}>
+      <body className={`${inter.variable} font-sans min-h-screen flex flex-col bg-gray-50 text-gray-900`}>
         
-        <header className="relative z-50 border-b border-white/10 bg-neutral-950/80 backdrop-blur-xl shadow-[0_15px_60px_-15px_rgba(255,255,255,0.05)]">
-          <div className="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
-            <div className="text-white font-bold text-xl md:text-2xl uppercase tracking-wider">
-              BAVARIA PERFORMANCE
+        <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 md:h-24 flex items-center justify-between">
+            <div className="text-gray-900 font-bold text-xl md:text-2xl tracking-wide uppercase">
+              Bavaria Performance
             </div>
             <div className="flex items-center gap-6">
-              <span className="hidden lg:inline-block text-sm text-neutral-500 font-mono">
-                Независимое объединение BMW инженеров Минска
+              <span className="hidden lg:inline-block text-sm text-gray-500">
+                Независимое объединение BMW инженеров
               </span>
               <a 
                 href="tel:+375291234567" 
-                className="text-white font-medium text-lg md:text-xl hover:text-blue-500 transition-colors"
+                className="text-gray-900 font-semibold text-lg md:text-xl hover:text-blue-600 transition-colors"
               >
                 +375 (29) 123-45-67
               </a>
@@ -37,7 +37,7 @@ export default function RootLayout({
           </div>
         </header>
         
-        <div className="flex-1 relative z-10">
+        <div className="flex-1 w-full relative">
           {children}
         </div>
       </body>
