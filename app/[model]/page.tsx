@@ -93,9 +93,9 @@ export default async function ModelPage({ params }: Props) {
             {trustMarkers.map((marker, idx) => (
               <div key={idx} className="bg-white border-2 border-black p-8">
                 {marker.icon}
-                <h3 className="text-black font-bold text-xl mb-3 tracking-wide uppercase">
+                <h2 className="text-black font-bold text-xl mb-3 tracking-wide uppercase">
                   {marker.title}
-                </h3>
+                </h2>
                 <p className="text-gray-600 leading-relaxed">
                   {marker.description}
                 </p>

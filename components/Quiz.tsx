@@ -55,9 +55,9 @@ export default function Quiz({ model }: QuizProps) {
         <span className="text-black font-bold uppercase text-xs tracking-wider">Шаг {step} / 3</span>
       </div>
 
-      <h3 className="text-xl md:text-2xl font-bold text-black mb-6 md:mb-8 uppercase tracking-wide">
+      <h2 className="text-xl md:text-2xl font-bold text-black mb-6 md:mb-8 uppercase tracking-wide">
         Рассчитайте стоимость для {model}
-      </h3>
+      </h2>
 
       {step === 1 && (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-300">
