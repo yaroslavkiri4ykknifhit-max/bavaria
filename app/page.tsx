@@ -32,8 +32,10 @@ export default function CatalogPage() {
 
         <div className="w-full mt-6 md:mt-10 overflow-hidden border-2 border-black bg-gray-100">
           <img 
-            src={`${basePath}/bg/main_bg.png`} 
+            src={`${basePath}/bg/main_bg.jpg`} 
             alt="BMW Tuning Garage" 
+            width="1920"
+            height="1080"
             className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover"
             fetchPriority="high"
             decoding="async"

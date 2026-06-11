@@ -76,8 +76,10 @@ export default async function ModelPage({ params }: Props) {
         {/* Инлайн-изображение вместо фона */}
         <div className="w-full border-2 border-black overflow-hidden bg-black mt-4 md:mt-0">
           <img 
-            src={`${basePath}/bg/bg_${modelStr}.png`} 
+            src={`${basePath}/bg/bg_${modelStr}.jpg`} 
             alt={`BMW ${model}`} 
+            width="1920"
+            height="1080"
             className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover opacity-90 hover:opacity-100 transition-opacity"
             fetchPriority="high"
             decoding="async"
