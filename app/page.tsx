@@ -35,6 +35,8 @@ export default function CatalogPage() {
             src={`${basePath}/bg/main_bg.png`} 
             alt="BMW Tuning Garage" 
             className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </section>

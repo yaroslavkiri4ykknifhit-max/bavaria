@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Cpu, Settings, ShieldCheck } from "lucide-react";
-import Quiz from "@/components/Quiz";
+import dynamic from "next/dynamic";
+
+const Quiz = dynamic(() => import("@/components/Quiz"));
 
 const ALLOWED_MODELS = ["e39", "e46", "e60", "e90", "f01", "f10", "f30", "e70", "x5"];
 
@@ -77,6 +79,8 @@ export default async function ModelPage({ params }: Props) {
             src={`${basePath}/bg/bg_${modelStr}.png`} 
             alt={`BMW ${model}`} 
             className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover opacity-90 hover:opacity-100 transition-opacity"
+            fetchPriority="high"
+            decoding="async"
           />
         </div>
       </section>
