@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function CatalogPage() {
@@ -15,6 +14,8 @@ export default function CatalogPage() {
     { id: "x5", name: "BMW X5", series: "F15/G05" },
   ];
 
+  const basePath = process.env.NODE_ENV === "production" ? "/bavaria" : "";
+
   return (
     <main className="min-h-screen py-8 md:py-24 px-4 md:px-6 max-w-7xl mx-auto space-y-10 md:space-y-16">
       
@@ -29,12 +30,11 @@ export default function CatalogPage() {
           Профессиональный чип-тюнинг и индивидуальная настройка блоков управления (DME/DDE) для всего модельного ряда.
         </p>
 
-        <div className="w-full mt-6 md:mt-10 border-2 border-black relative h-[40vh] md:h-[60vh] bg-gray-100">
-          <Image 
-            src="/bg/main_bg.png" 
+        <div className="w-full mt-6 md:mt-10 overflow-hidden border-2 border-black bg-gray-100">
+          <img 
+            src={`${basePath}/bg/main_bg.png`} 
             alt="BMW Tuning Garage" 
-            fill
-            className="object-cover"
+            className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover"
           />
         </div>
       </section>
