@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Cpu, Settings, ShieldCheck } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -88,14 +89,13 @@ export default async function ModelPage({ params }: Props) {
 
         {/* Image */}
         <div className="w-full overflow-hidden rounded-xl shadow-md border border-gray-200 bg-gray-100">
-          <img 
+          <Image 
             src={`${basePath}/bg/bg_${modelStr}.jpg`} 
             alt={`BMW ${model}`} 
-            width="1920"
-            height="1080"
+            width={1920}
+            height={1080}
             className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover"
-            fetchPriority="high"
-            decoding="async"
+            priority
           />
         </div>
       </section>

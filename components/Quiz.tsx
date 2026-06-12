@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Loader2 } from "lucide-react";
 
 type QuizProps = {
   model: string;
@@ -14,6 +14,8 @@ export default function Quiz({ model }: QuizProps) {
   const [engine, setEngine] = useState<string | null>(null);
   const [goals, setGoals] = useState<string[]>([]);
   const [phone, setPhone] = useState("+375");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleEngineSelect = (selected: string) => {
     setEngine(selected);
@@ -32,10 +34,29 @@ export default function Quiz({ model }: QuizProps) {
     setPhone(val);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (phone.length >= 13) {
+    if (phone.length < 13 || isSubmitting) return;
+
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ model, engine, goals, phone }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Ошибка отправки");
+      }
+
       router.push("/thanks");
+    } catch {
+      setError("Не удалось отправить заявку. Попробуйте еще раз.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -140,11 +161,26 @@ export default function Quiz({ model }: QuizProps) {
           </div>
           <button
             type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white w-full py-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
+            disabled={isSubmitting}
+            className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:hover:bg-blue-600 text-white w-full py-4 rounded-lg font-semibold transition-all flex items-center justify-center gap-2"
           >
-            Получить расчет
-            <ArrowRight className="w-5 h-5" />
+            {isSubmitting ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                Отправка...
+              </>
+            ) : (
+              <>
+                Получить расчет
+                <ArrowRight className="w-5 h-5" />
+              </>
+            )}
           </button>
+          {error && (
+            <p className="text-sm text-center text-red-500 mt-4">
+              {error}
+            </p>
+          )}
           <p className="text-xs text-center text-gray-400 mt-4">
             Мы перезвоним в течение 10 минут
           </p>

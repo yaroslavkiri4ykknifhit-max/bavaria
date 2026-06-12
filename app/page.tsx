@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default function CatalogPage() {
@@ -32,14 +33,13 @@ export default function CatalogPage() {
         </p>
 
         <div className="w-full mt-8 md:mt-12 overflow-hidden rounded-xl shadow-md border border-gray-200">
-          <img 
+          <Image 
             src={`${basePath}/bg/main_bg.jpg`} 
             alt="BMW Tuning Garage" 
-            width="1920"
-            height="1080"
+            width={1920}
+            height={1080}
             className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover"
-            fetchPriority="high"
-            decoding="async"
+            priority
           />
         </div>
       </section>
