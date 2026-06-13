@@ -56,6 +56,12 @@ export default async function ModelPage({ params }: Props) {
     },
   ];
 
+  const recentWork = [
+    { date: "12.06.2025", car: `BMW ${model} 3.0d`, work: "Stage 1 + EGR off", result: "+57 л.с." },
+    { date: "08.06.2025", car: `BMW ${model} 3.0i`, work: "Stage 1", result: "+17 л.с." },
+    { date: "01.06.2025", car: `BMW ${model} 4.4i`, work: "Stage 1 + DPF off", result: "+73 л.с." },
+  ];
+
   return (
     <main className="min-h-screen">
       {/* Hero */}
@@ -170,6 +176,48 @@ export default async function ModelPage({ params }: Props) {
                   </tbody>
                 </table>
               </div>
+            </div>
+
+            {/* Recent Work */}
+            <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+              <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                <h2 className="text-sm font-semibold text-gray-900">Последние работы</h2>
+                <span className="text-xs text-gray-300">обновлено 14.06.2025</span>
+              </div>
+              <div className="divide-y divide-gray-50">
+                {recentWork.map((item, i) => (
+                  <div key={i} className="px-4 py-3 flex items-center justify-between text-sm">
+                    <div>
+                      <div className="font-medium text-gray-900">{item.car}</div>
+                      <div className="text-xs text-gray-400 mt-0.5">{item.work}</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-blue-600 font-medium">{item.result}</div>
+                      <div className="text-xs text-gray-300">{item.date}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Review */}
+            <div className="bg-white border border-gray-200 rounded-lg p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-xs font-medium text-gray-500">А</div>
+                <div>
+                  <div className="text-sm font-medium text-gray-900">Алексей</div>
+                  <div className="text-xs text-gray-400">BMW {model} 3.0d</div>
+                </div>
+                <div className="ml-auto flex gap-0.5">
+                  {[1,2,3,4,5].map(j => (
+                    <svg key={j} width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b" stroke="none">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed">После Stage 1 машина просто otraя. Разница ощутима сразу — и на низах, и на верхах. Убрал DPF, ошибок нет. Рекомендую.</p>
+              <div className="text-xs text-gray-300 mt-2">Май 2025</div>
             </div>
           </div>
           

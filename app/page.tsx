@@ -60,6 +60,22 @@ export default function CatalogPage() {
                   Оборудование ICOM
                 </span>
               </div>
+              <div className="flex items-center gap-6 mt-6 pt-6 border-t border-gray-100">
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">7+</div>
+                  <div className="text-xs text-gray-400">лет опыта</div>
+                </div>
+                <div className="w-px h-8 bg-gray-100"/>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">500+</div>
+                  <div className="text-xs text-gray-400">прошитых авто</div>
+                </div>
+                <div className="w-px h-8 bg-gray-100"/>
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">4.9</div>
+                  <div className="text-xs text-gray-400">средняя оценка</div>
+                </div>
+              </div>
             </div>
             
             <div className="relative">
@@ -166,6 +182,84 @@ export default function CatalogPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Guarantees */}
+      <section className="bg-white border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Наши гарантии</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { title: "14 дней на возврат", desc: "Если результат не устроит — вернем деньги", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 14l-4-4m0 0l4-4m-4 4h11a4 4 0 010 8h-1"/></svg> },
+              { title: "Без ошибок", desc: "Проверяем сканером после прошивки", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> },
+              { title: "Запись ПО", desc: "Сохраним вашу заводскую прошивку", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg> },
+              { title: "Честная оценка", desc: "Скажем, если прошивка не даст эффект", icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg> },
+            ].map((item, i) => (
+              <div key={i} className="flex gap-3 p-4 bg-gray-50 rounded-lg">
+                <div className="flex-shrink-0 w-10 h-10 bg-white border border-gray-100 rounded-lg flex items-center justify-center text-gray-500">
+                  {item.icon}
+                </div>
+                <div>
+                  <h3 className="text-sm font-medium text-gray-900 mb-0.5">{item.title}</h3>
+                  <p className="text-xs text-gray-400">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">Отзывы клиентов</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {[
+            {
+              name: "Алексей",
+              car: "BMW F10 535i",
+              text: "После Stage 1 машина просто otraя. Разница ощутима сразу — и на низах, и на верхах. Убрал DPF, ошибок нет. Рекомендую.",
+              rating: 5,
+              date: "Май 2025"
+            },
+            {
+              name: "Дмитрий",
+              car: "BMW E90 330d",
+              text: "Приехал с чиповкой от другого мастера — машинатроила. Здесь всё сделали заново, проанализировали. Теперь едет как надо.",
+              rating: 5,
+              date: "Апрель 2025"
+            },
+            {
+              name: "Сергей",
+              car: "BMW X5 F15 30d",
+              text: "Убрал сажевик и мочевину. Всё чисто, без ошибок. Инженер всё объяснил, показал результаты до/после. Профессионалы.",
+              rating: 5, 
+              date: "Март 2025"
+            }
+          ].map((review, i) => (
+            <div key={i} className="bg-white border border-gray-200 rounded-lg p-5">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center text-xs font-medium text-gray-500">
+                    {review.name[0]}
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-gray-900">{review.name}</div>
+                    <div className="text-xs text-gray-400">{review.car}</div>
+                  </div>
+                </div>
+                <div className="text-xs text-gray-300">{review.date}</div>
+              </div>
+              <div className="flex gap-0.5 mb-2">
+                {[...Array(review.rating)].map((_, j) => (
+                  <svg key={j} width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="none">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm text-gray-600 leading-relaxed">{review.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
