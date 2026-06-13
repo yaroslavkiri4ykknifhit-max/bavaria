@@ -1,29 +1,28 @@
 import Link from "next/link";
-import { Check } from "lucide-react";
 
 export default function ThanksPage() {
   return (
-    <main className="min-h-[80vh] flex items-center justify-center p-6">
-      <div className="bg-white border border-gray-200 rounded-lg p-10 md:p-14 max-w-md w-full text-center">
-        <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 bg-green-50 border border-green-200 rounded-full flex items-center justify-center">
-            <Check className="w-8 h-8 text-green-600" strokeWidth={2.5} />
-          </div>
+    <main className="min-h-[70vh] flex items-center justify-center p-6">
+      <div className="bg-white border border-gray-200 rounded-lg p-8 md:p-10 max-w-sm w-full text-center">
+        <div className="w-12 h-12 bg-green-50 border border-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
         </div>
         
-        <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+        <h1 className="text-xl font-semibold text-gray-900 mb-2">
           Заявка принята
         </h1>
         
-        <p className="text-gray-500 text-base mb-8">
-          Номер передан инженеру. Перезвоним в течение 10 минут.
+        <p className="text-gray-500 text-sm mb-6">
+          Перезвоним в течение 10 минут
         </p>
 
         <Link 
           href="/"
-          className="inline-flex items-center justify-center w-full py-3 bg-gray-900 hover:bg-gray-800 text-white font-medium text-sm rounded-lg transition-colors"
+          className="block w-full py-2.5 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded transition-colors"
         >
-          Вернуться на главную
+          На главную
         </Link>
       </div>
     </main>
