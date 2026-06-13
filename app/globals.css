@@ -6,66 +6,17 @@
 
 @layer base {
   body {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-    color: var(--color-gray-900);
-    min-height: 100vh;
+    background-color: #fafafa;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-@layer utilities {
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-pulse-slow {
-    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  .gradient-text {
-    background: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #db2777 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .card-glow:hover {
-    box-shadow: 0 0 40px rgba(59, 130, 246, 0.15), 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-  
-  .gradient-border {
-    position: relative;
-    background: white;
-    border-radius: 0.75rem;
-  }
-  
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: calc(0.75rem + 2px);
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .gradient-border:hover::before {
-    opacity: 1;
-  }
+input[type="tel"]::placeholder {
+  color: #9ca3af;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+input[type="tel"]:focus {
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }

@@ -70,123 +70,89 @@ export default async function ModelPage({ params }: Props) {
   ];
 
   return (
-    <main className="py-10 md:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 md:space-y-16 relative">
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10 rounded-full blur-3xl -z-10 animate-pulse-slow" />
+    <main className="py-8 md:py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto space-y-8 md:space-y-12">
       
-      {/* Hero Section */}
-      <section className="flex flex-col gap-8 md:gap-10">
-        <div className="space-y-6 max-w-4xl relative">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-200/50 text-blue-700 text-xs md:text-sm font-semibold rounded-full backdrop-blur-sm">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+      {/* Hero */}
+      <section className="flex flex-col gap-6 md:gap-8">
+        <div className="max-w-3xl">
+          <div className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded uppercase tracking-wider mb-4">
             {model === "X5" ? "BMW X5 (E70 / F15 / G05)" : `BMW ${model}`}
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight">
-            <span className="text-gray-900">Чип-тюнинг BMW {model} </span>
-            <br/> 
-            <span className="gradient-text">до {maxGain} л.с.</span>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight mb-4">
+            Чип-тюнинг BMW {model}
           </h1>
-          <p className="text-base md:text-xl text-gray-600 leading-relaxed max-w-3xl">
-            Индивидуальная настройка ПО двигателя и АКПП: Stage 1 / Stage 2. Программное отключение экологии (EGR, DPF, SCR) без ошибок на приборной панели.
+          <p className="text-base md:text-lg text-gray-500 leading-relaxed">
+            Индивидуальная настройка ПО двигателя и АКПП. Программное отключение экологии без ошибок на приборной панели.
           </p>
         </div>
 
-        {/* Image */}
-        <div className="w-full relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
-          <div className="relative overflow-hidden rounded-2xl shadow-2xl border border-white/20 bg-gray-100">
-            <Image 
-              src={`${basePath}/bg/bg_${modelStr}.jpg`} 
-              alt={`BMW ${model}`} 
-              width={1920}
-              height={1080}
-              className="w-full h-auto max-h-[40vh] md:max-h-[60vh] object-cover group-hover:scale-105 transition-transform duration-700"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          </div>
+        <div className="w-full overflow-hidden rounded-lg bg-gray-100">
+          <Image 
+            src={`${basePath}/bg/bg_${modelStr}.jpg`} 
+            alt={`BMW ${model}`} 
+            width={1920}
+            height={1080}
+            className="w-full h-auto max-h-[35vh] md:max-h-[50vh] object-cover"
+            priority
+          />
         </div>
       </section>
 
-      {/* Main Content Grid */}
+      {/* Content */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div className="w-full lg:col-span-7 space-y-8 flex flex-col-reverse lg:flex-col">
+        <div className="w-full lg:col-span-7 space-y-6">
           
-          {/* Mobile Quiz loads logically below the content, Desktop sidebar */}
-          <div className="lg:hidden w-full mb-8">
+          <div className="lg:hidden">
             <Quiz model={model} />
           </div>
 
-          {/* Trust Features */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+          {/* Trust */}
+          <div className="grid grid-cols-1 gap-4">
             {trustMarkers.map((marker, idx) => (
-              <div key={idx} className="group bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl shadow-sm p-6 md:p-8 hover:shadow-xl hover:bg-white transition-all duration-300 card-glow">
-                <div className="w-14 h-14 mb-4 rounded-xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-500 group-hover:shadow-lg group-hover:shadow-blue-500/30">
-                  <svg className="w-7 h-7 text-blue-600 group-hover:text-white transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={marker.iconPath} />
-                  </svg>
-                </div>
-                <h2 className="text-gray-900 font-bold text-lg mb-2 group-hover:text-blue-600 transition-colors">
+              <div key={idx} className="bg-white border border-gray-200 rounded-lg p-5">
+                <h3 className="text-gray-900 font-semibold text-sm mb-1.5">
                   {marker.title}
-                </h2>
-                <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
                   {marker.description}
                 </p>
               </div>
             ))}
           </div>
 
-          {/* Performance Table */}
-          <div className="bg-white/80 backdrop-blur-sm border border-white/50 rounded-2xl shadow-xl p-6 md:p-8 w-full overflow-hidden">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-green-500/30">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h2 className="text-xl md:text-2xl font-bold text-gray-900">
-                Прирост мощности (Stage 1)
-              </h2>
-            </div>
+          {/* Table */}
+          <div className="bg-white border border-gray-200 rounded-lg p-5 w-full overflow-hidden">
+            <h2 className="text-base font-semibold text-gray-900 mb-4">
+              Прирост мощности (Stage 1)
+            </h2>
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse min-w-[500px]">
+              <table className="w-full text-left border-collapse min-w-[450px]">
                 <thead>
-                  <tr className="border-b-2 border-gray-100 text-gray-500 text-xs md:text-sm uppercase tracking-wide">
-                    <th className="py-3 font-semibold">Двигатель</th>
-                    <th className="py-3 font-semibold">Завод</th>
-                    <th className="py-3 font-semibold">Stage 1</th>
-                    <th className="py-3 font-semibold text-green-600">Прирост</th>
+                  <tr className="border-b border-gray-100 text-gray-500 text-xs uppercase tracking-wide">
+                    <th className="py-2 font-medium">Двигатель</th>
+                    <th className="py-2 font-medium">Завод</th>
+                    <th className="py-2 font-medium">Stage 1</th>
+                    <th className="py-2 font-medium text-blue-600">Прирост</th>
                   </tr>
                 </thead>
-                <tbody className="text-gray-900 divide-y divide-gray-50">
-                  <tr className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group">
-                    <td className="py-4 font-semibold group-hover:text-blue-600 transition-colors">3.0d (M57)</td>
-                    <td className="py-4 text-gray-600">218 л.с. / 500 Нм</td>
-                    <td className="py-4 font-medium">275 л.с. / 600 Нм</td>
-                    <td className="py-4">
-                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg shadow-green-500/30">
-                        +57 л.с.
-                      </span>
-                    </td>
+                <tbody className="text-gray-900 divide-y divide-gray-50 text-sm">
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="py-3 font-medium">3.0d (M57)</td>
+                    <td className="py-3 text-gray-500">218 л.с. / 500 Нм</td>
+                    <td className="py-3">275 л.с. / 600 Нм</td>
+                    <td className="py-3 text-blue-600 font-semibold">+57 л.с.</td>
                   </tr>
-                  <tr className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group">
-                    <td className="py-4 font-semibold group-hover:text-blue-600 transition-colors">3.0i (N52)</td>
-                    <td className="py-4 text-gray-600">258 л.с. / 300 Нм</td>
-                    <td className="py-4 font-medium">275 л.с. / 330 Нм</td>
-                    <td className="py-4">
-                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg shadow-green-500/30">
-                        +17 л.с.
-                      </span>
-                    </td>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="py-3 font-medium">3.0i (N52)</td>
+                    <td className="py-3 text-gray-500">258 л.с. / 300 Нм</td>
+                    <td className="py-3">275 л.с. / 330 Нм</td>
+                    <td className="py-3 text-blue-600 font-semibold">+17 л.с.</td>
                   </tr>
-                  <tr className="hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group">
-                    <td className="py-4 font-semibold group-hover:text-blue-600 transition-colors">4.4i (N63)</td>
-                    <td className="py-4 text-gray-600">407 л.с. / 600 Нм</td>
-                    <td className="py-4 font-medium">480 л.с. / 750 Нм</td>
-                    <td className="py-4">
-                      <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-bold rounded-full shadow-lg shadow-green-500/30">
-                        +73 л.с.
-                      </span>
-                    </td>
+                  <tr className="hover:bg-gray-50 transition-colors">
+                    <td className="py-3 font-medium">4.4i (N63)</td>
+                    <td className="py-3 text-gray-500">407 л.с. / 600 Нм</td>
+                    <td className="py-3">480 л.с. / 750 Нм</td>
+                    <td className="py-3 text-blue-600 font-semibold">+73 л.с.</td>
                   </tr>
                 </tbody>
               </table>
@@ -194,8 +160,8 @@ export default async function ModelPage({ params }: Props) {
           </div>
         </div>
         
-        {/* Quiz Sidebar (Desktop) */}
-        <div className="hidden lg:block w-full lg:col-span-5 sticky top-28">
+        {/* Quiz Sidebar */}
+        <div className="hidden lg:block w-full lg:col-span-5 lg:sticky lg:top-24">
           <Quiz model={model} />
         </div>
       </section>
