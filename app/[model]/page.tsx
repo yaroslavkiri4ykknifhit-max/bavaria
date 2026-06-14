@@ -87,7 +87,7 @@ export default async function ModelPage({ params }: Props) {
               </div>
             </div>
             
-            <div className="hidden lg:block">
+            <div>
               <div className="relative">
                 <Image 
                   src={`${basePath}/bg/bg_${modelStr}.jpg`} 
@@ -96,7 +96,7 @@ export default async function ModelPage({ params }: Props) {
                   height={540}
                   className="w-full h-auto object-cover opacity-80"
                   priority
-                  sizes="(max-width: 1024px) 0px, 50vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </div>

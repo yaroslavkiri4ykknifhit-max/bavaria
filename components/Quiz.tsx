@@ -60,23 +60,23 @@ export default function Quiz({ model }: QuizProps) {
   };
 
   return (
-    <div className="bg-white border border-[#eee] overflow-hidden">
-      <div className="px-5 py-4 border-b border-[#eee]">
+    <div className="bg-[#111] border-2 border-[#e11d48] overflow-hidden">
+      <div className="px-5 py-4 border-b border-white/10">
         <div className="flex items-center justify-between mb-3">
           <div className="flex gap-1">
             {[1, 2, 3].map((i) => (
               <div
                 key={i}
                 className={`h-1 w-6 ${
-                  step >= i ? "bg-[#e11d48]" : "bg-[#eee]"
+                  step >= i ? "bg-[#e11d48]" : "bg-white/10"
                 }`}
               />
             ))}
           </div>
-          <span className="text-[#ccc] text-xs">{step}/3</span>
+          <span className="text-white/30 text-xs">{step}/3</span>
         </div>
-        <h2 className="text-sm font-bold text-[#111]">
-          Стоимость для <span className="text-[#e11d48]">{model}</span>
+        <h2 className="text-sm font-bold text-white">
+          Рассчитать стоимость <span className="text-[#e11d48]">{model}</span>
         </h2>
       </div>
 
@@ -84,7 +84,7 @@ export default function Quiz({ model }: QuizProps) {
 
       {step === 1 && (
         <div>
-          <p className="text-[#888] mb-3 text-sm">Какой тип двигателя?</p>
+          <p className="text-white/40 mb-3 text-sm">Какой тип двигателя?</p>
           <div className="flex flex-col gap-2">
             {[
               { name: "Бензин" },
@@ -95,13 +95,13 @@ export default function Quiz({ model }: QuizProps) {
                 onClick={() => handleEngineSelect(type.name)}
                 className={`min-h-[48px] w-full flex items-center justify-between px-4 border transition-colors text-sm font-semibold ${
                   engine === type.name
-                    ? "border-[#e11d48] bg-[#fef2f2] text-[#111]"
-                    : "border-[#eee] bg-white text-[#555] hover:border-[#ddd]"
+                    ? "border-[#e11d48] bg-[#e11d48]/10 text-white"
+                    : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:bg-white/10"
                 }`}
               >
                 {type.name}
                 <div className={`w-5 h-5 border-2 flex items-center justify-center transition-colors ${
-                  engine === type.name ? "border-[#e11d48] bg-[#e11d48]" : "border-[#ddd]"
+                  engine === type.name ? "border-[#e11d48] bg-[#e11d48]" : "border-white/20"
                 }`}>
                   {engine === type.name && (
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
@@ -117,7 +117,7 @@ export default function Quiz({ model }: QuizProps) {
 
       {step === 2 && (
         <div>
-          <p className="text-[#888] mb-3 text-sm">Что нужно сделать?</p>
+          <p className="text-white/40 mb-3 text-sm">Что нужно сделать?</p>
           <div className="flex flex-col gap-2 mb-5">
             {[
               "Stage 1 (Увеличение мощности)",
@@ -129,13 +129,13 @@ export default function Quiz({ model }: QuizProps) {
                 onClick={() => toggleGoal(goal)}
                 className={`min-h-[48px] w-full flex items-center justify-between px-4 border transition-colors text-sm font-semibold text-left ${
                   goals.includes(goal)
-                    ? "border-[#e11d48] bg-[#fef2f2] text-[#111]"
-                    : "border-[#eee] bg-white text-[#555] hover:border-[#ddd]"
+                    ? "border-[#e11d48] bg-[#e11d48]/10 text-white"
+                    : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:bg-white/10"
                 }`}
               >
                 <span className="flex-1">{goal}</span>
                 <div className={`w-5 h-5 border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
-                  goals.includes(goal) ? "bg-[#e11d48] border-[#e11d48]" : "border-[#ddd]"
+                  goals.includes(goal) ? "bg-[#e11d48] border-[#e11d48]" : "border-white/20"
                 }`}>
                   {goals.includes(goal) && (
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
@@ -149,7 +149,7 @@ export default function Quiz({ model }: QuizProps) {
           <button
             onClick={() => setStep(3)}
             disabled={goals.length === 0}
-            className="w-full py-3 bg-[#111] hover:bg-[#333] disabled:bg-[#eee] disabled:text-[#aaa] text-white transition-colors flex items-center justify-center gap-2 text-sm font-bold"
+            className="w-full py-3 bg-[#e11d48] hover:bg-[#be123c] disabled:bg-white/10 disabled:text-white/30 text-white transition-colors flex items-center justify-center gap-2 text-sm font-bold"
           >
             Далее
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -161,21 +161,21 @@ export default function Quiz({ model }: QuizProps) {
 
       {step === 3 && (
         <form onSubmit={handleSubmit}>
-          <p className="text-[#888] mb-3 text-sm">Ваш телефон</p>
+          <p className="text-white/40 mb-3 text-sm">Ваш телефон</p>
           <div className="mb-4">
             <input
               type="tel"
               value={phone}
               onChange={handlePhoneChange}
               placeholder="+375 (XX) XXX-XX-XX"
-              className="w-full min-h-[48px] bg-[#fafafa] border border-[#eee] px-4 text-sm font-semibold text-[#111] outline-none focus:border-[#e11d48] transition-colors placeholder:text-[#ccc]"
+              className="w-full min-h-[48px] bg-white/5 border border-white/10 px-4 text-sm font-semibold text-white outline-none focus:border-[#e11d48] transition-colors placeholder:text-white/20"
               required
             />
           </div>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="bg-[#e11d48] hover:bg-[#be123c] disabled:bg-[#eee] disabled:text-[#aaa] text-white w-full py-3 font-bold transition-colors flex items-center justify-center gap-2 text-sm"
+            className="bg-[#e11d48] hover:bg-[#be123c] disabled:bg-white/10 disabled:text-white/30 text-white w-full py-3 font-bold transition-colors flex items-center justify-center gap-2 text-sm"
           >
             {isSubmitting ? (
               <>
@@ -194,11 +194,11 @@ export default function Quiz({ model }: QuizProps) {
             )}
           </button>
           {error && (
-            <p className="text-sm text-center text-red-500 mt-3 font-medium">
+            <p className="text-sm text-center text-red-400 mt-3 font-medium">
               {error}
             </p>
           )}
-          <p className="text-xs text-center text-[#ccc] mt-3">
+          <p className="text-xs text-center text-white/20 mt-3">
             Перезвоним в течение 10 минут
           </p>
         </form>
