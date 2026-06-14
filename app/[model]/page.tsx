@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import dynamic from "next/dynamic";
+import ReviewCard from "@/components/ReviewCard";
 
 const Quiz = dynamic(() => import("@/components/Quiz"));
 
@@ -251,26 +252,12 @@ export default async function ModelPage({ params }: Props) {
             </div>
 
             {/* Review */}
-            <div className="bg-[#fafafa] border border-[#eee] p-5">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 bg-[#111] flex items-center justify-center text-white text-xs font-bold">
-                  {currentReview.name[0]}
-                </div>
-                <div className="flex-1">
-                  <div className="text-sm font-bold text-[#111]">{currentReview.name}</div>
-                  <div className="text-xs text-[#aaa]">{currentReview.car}</div>
-                </div>
-                <div className="text-xs text-[#ccc]">{currentReview.date}</div>
-              </div>
-              <div className="flex gap-0.5 mb-2">
-                {[1,2,3,4,5].map(j => (
-                  <svg key={j} width="12" height="12" viewBox="0 0 24 24" fill="#e11d48" stroke="none">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm text-[#555] leading-relaxed">{currentReview.text}</p>
-            </div>
+            <ReviewCard
+              name={currentReview.name}
+              car={currentReview.car}
+              text={currentReview.text}
+              date={currentReview.date}
+            />
           </div>
           
           {/* Quiz Sidebar */}
