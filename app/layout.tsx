@@ -1,10 +1,23 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter" });
+const inter = Inter({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: true,
+});
 
 const siteUrl = "https://bavaria-performance.example.com";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0f172a",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -79,33 +92,52 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.variable} font-sans min-h-screen flex flex-col bg-gray-50 text-gray-900`}>
+      <body className={`${inter.variable} font-sans min-h-screen flex flex-col bg-slate-50 text-slate-900`}>
         
-        <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+        <header className="glass sticky top-0 z-50 border-b border-slate-200/60">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 md:h-16 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2.5">
-              <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <rect width="28" height="28" rx="4" fill="#111"/>
-                <path d="M7 20V8l7 6-7 6z" fill="#fff"/>
-                <path d="M15 8h6" stroke="#fff" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              <span className="font-semibold text-gray-900 text-sm tracking-tight">BAVARIA</span>
-            </a>
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <div className="w-8 h-8 gradient-brand rounded-lg flex items-center justify-center shadow-brand group-hover:scale-105 transition-transform">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 19V5l10 7-10 7z" fill="#fff"/>
+                  <path d="M15 5h7" stroke="#fff" strokeWidth="2.5" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="font-bold text-slate-900 text-sm tracking-tight">BAVARIA</span>
+                <span className="text-[10px] text-slate-400 font-medium tracking-wider uppercase">Performance</span>
+              </div>
+            </Link>
             <a 
               href="tel:+375291234567" 
-              className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors text-sm"
+              className="flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-3 py-2 rounded-lg text-sm font-medium transition-all hover:shadow-lg active:scale-95"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
               </svg>
-              <span className="font-medium">+375 (29) 123-45-67</span>
+              <span className="hidden sm:inline">+375 (29) 123-45-67</span>
+              <span className="sm:hidden">Звонок</span>
             </a>
           </div>
         </header>
         
-        <div className="flex-1 w-full relative">
+        <div className="flex-1 w-full relative pb-20 md:pb-0">
           {children}
+        </div>
+
+        <div className="md:hidden mobile-cta-bar">
+          <a
+            href="tel:+375291234567"
+            className="flex items-center justify-center gap-2 w-full py-3.5 gradient-brand text-white rounded-xl font-semibold text-sm shadow-brand active:scale-[0.98] transition-transform"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+            Позвонить нам
+          </a>
         </div>
       </body>
     </html>
